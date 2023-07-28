@@ -11,7 +11,7 @@ function c511027001.initial_effect(c)
 end
 
 function c511027001.target(e,tp,eg,ep,ev,re,r,rp,chk)
-
+	print(chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,2) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(2)
