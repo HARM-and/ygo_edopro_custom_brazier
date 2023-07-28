@@ -1,7 +1,7 @@
 --Grand Brazier
 function c511027005.initial_effect(c)
 	c:EnableCounterPermit(0xb3c)
-    
+
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -18,15 +18,15 @@ function c511027005.initial_effect(c)
 	c:RegisterEffect(e3)
 
 	--Remove counter replace
-	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(511027005,0))
-	e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e4:SetCode(EFFECT_REPL)
-	e4:SetRange(LOCATION_SZONE)
-	e4:SetCountLimit(1)
-	e4:SetCondition(c511027005.rcon)
-	e4:SetOperation(c511027005.rop)
-	c:RegisterEffect(e4)
+	--local e4=Effect.CreateEffect(c)
+	--e4:SetDescription(aux.Stringid(511027005,0))
+	--e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	--e4:SetCode(EFFECT_REPL)
+	--e4:SetRange(LOCATION_SZONE)
+	--e4:SetCountLimit(1)
+	--e4:SetCondition(c511027005.rcon)
+	--e4:SetOperation(c511027005.rop)
+	--c:RegisterEffect(e4)
 
 end
 
