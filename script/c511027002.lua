@@ -8,6 +8,15 @@ function c511027002.initial_effect(c)
 	e1:SetTarget(c511027002.thtg)
 	e1:SetOperation(c511027002.thop)
 	c:RegisterEffect(e1)
+
+	local e2=Effect.CreateEffect(c)
+	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e2:SetType(EFFECT_TYPE_IGNITION)
+	e2:SetRange(LOCATION_MZONE)
+	e2:SetCountLimit(1)
+	e2:SetTarget(c511027002.thtg)
+	e2:SetOperation(c511027002.thoq)
+	c:RegisterEffect(e2)
 end
 
 function c511027002.filter1(c)
@@ -22,10 +31,20 @@ end
 function c511027002.thop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c511027002.filter1,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,2,nil)
+	local g=Duel.SelectMatchingCard(tp,c511027002.filter1,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
-		Duel.PayLPCost(tp,7000)
+	end
+end
+
+function c511027002.thoq(e,tp,eg,ep,ev,re,r,rp)
+	if not e:GetHandler():IsRelateToEffect(e) then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	local g=Duel.SelectMatchingCard(tp,c511027002.filter1,tp,LOCATION_GRAVE,0,1,1,nil)
+	if g:GetCount()>0 then
+		Duel.PayLPCost(tp, 7999)
+		Duel.SendtoHand(g,nil,REASON_EFFECT)
+		Duel.ConfirmCards(1-tp,g)
 	end
 end
