@@ -10,7 +10,7 @@ function c511027004.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCost(c511027004.cost)
 	e1:SetTarget(c511027004.target)
-	e1:SetOperation(cc511027004.activate)
+	e1:SetOperation(c511027004.activate)
 	c:RegisterEffect(e1)
 end
 
