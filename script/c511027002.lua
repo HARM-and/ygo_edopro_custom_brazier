@@ -26,5 +26,6 @@ function c511027002.thop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
+		Duel.PayLPCost(tp,7000)
 	end
 end
