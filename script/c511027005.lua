@@ -16,13 +16,16 @@ function c511027005.initial_effect(c)
 	e3:SetOperation(c511027005.op)
 	c:RegisterEffect(e3)
 
-end
+    --Remove counter replace
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_IGNITION+EFFECT_TYPE_FIELD)
+	e4:SetCode(EFFECT_RCOUNTER_REPLACE+0xb3c)
+	e4:SetRange(LOCATION_SZONE)
+	e4:SetCountLimit(1)
+	e4:SetCondition(c511027005.rcon)
+	e4:SetOperation(c511027005.rop)
+	c:RegisterEffect(e4)
 
-function c511027005.op(e,tp,eg,ep,ev,re,r,rp)
-	local c=re:GetHandler()
-	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and c~=e:GetHandler() then
-		e:GetHandler():AddCounter(0xb3c,1)
-	end
 end
 
 function c511027005.rcon(e,tp,eg,ep,ev,re,r,rp)
@@ -31,6 +34,13 @@ end
 
 function c511027005.rop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RemoveCounter(ep,0xb3c,ev,REASON_EFFECT)
+end
+
+function c511027005.op(e,tp,eg,ep,ev,re,r,rp)
+	local c=re:GetHandler()
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and c~=e:GetHandler() then
+		e:GetHandler():AddCounter(0xb3c,1)
+	end
 end
 
 function c511027005.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
