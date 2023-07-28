@@ -16,11 +16,12 @@ function c511027005.initial_effect(c)
 	e3:SetOperation(c511027005.op)
 	c:RegisterEffect(e3)
 
-    --Remove counter replace
+	--Remove counter replace
 	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_IGNITION+EFFECT_TYPE_FIELD)
+	e4:SetDescription(aux.Stringid(511027005,0))
+	e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e4:SetCode(EFFECT_RCOUNTER_REPLACE+0xb3c)
-	e4:SetRange(LOCATION_SZONE)
+	e4:SetRange(LOCATION_FZONE)
 	e4:SetCountLimit(1)
 	e4:SetCondition(c511027005.rcon)
 	e4:SetOperation(c511027005.rop)
