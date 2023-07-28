@@ -1,7 +1,6 @@
 --Garde du Brazier
 function c511027002.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription("COUCOU",0,0)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
