@@ -17,8 +17,8 @@ end
 c511027004.counter_list={COUNTER_SPELL}
 
 function c511027004.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,0xb3c,0,COUNTER_SPELL,10,REASON_COST) end
-	Duel.RemoveCounter(tp,0xb3c,0,COUNTER_SPELL,10,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,0xb3c,0,COUNTER_SPELL,3,REASON_COST) end
+	Duel.RemoveCounter(tp,0xb3c,0,COUNTER_SPELL,3,REASON_COST)
 end
 
 function c511027004.target(e,tp,eg,ep,ev,re,r,rp,chk)
