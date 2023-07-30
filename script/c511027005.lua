@@ -30,9 +30,12 @@ function s.initial_effect(c)
 	e3:SetOperation(s.spop)
 	c:RegisterEffect(e3)
 
-	--Summon Boss Monster
-	local e4=Effect.CreateEffect(c)
+	-- Ritual Summon 1 "Libromancer" monster
+	local e4=Ritual.CreateProc(c,RITPROC_GREATER,aux.FilterBoolFunction(Card.IsSetCard,0xb3a),nil,aux.Stringid(id,1))
+	e4:SetType(EFFECT_TYPE_IGNITION)
+	e4:SetRange(LOCATION_SZONE)
 	c:RegisterEffect(e4)
+
 end
 
 s.listed_series={0xb3a}
