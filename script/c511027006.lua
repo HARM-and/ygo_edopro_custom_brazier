@@ -29,7 +29,3 @@ end
 function s.twicecon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetCounter(0xb3c)>=0
 end
-
-function s.atkop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateAttack()
-end
