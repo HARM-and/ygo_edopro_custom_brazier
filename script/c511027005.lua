@@ -10,7 +10,7 @@ function s.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
 
-	--indestructable
+	--Indestructable
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
@@ -27,9 +27,12 @@ function s.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCondition(s.spcon)
-	-- e3:SetTarget(s.sptg)
 	e3:SetOperation(s.spop)
 	c:RegisterEffect(e3)
+
+	--Summon Boss Monster
+	local e4=Effect.CreateEffect(c)
+	c:RegisterEffect(e4)
 end
 
 s.listed_series={0xb3a}
