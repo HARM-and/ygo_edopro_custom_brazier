@@ -31,10 +31,6 @@ end
 
 s.listed_series={0xb3a}
 
-function s.onlyPyro(e,c)
-	return c:IsRace(RACE_PYRO)
-end
-
 function s.indct(e,re,r,rp)
 	if (r&REASON_BATTLE+REASON_EFFECT)~=0 then
 		return 1
