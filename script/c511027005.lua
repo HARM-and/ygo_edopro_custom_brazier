@@ -25,20 +25,11 @@ function c511027005.initial_effect(c)
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetTarget(aux.TargetBoolFunction(Card.IsRace,RACE_PYRO))
-	--ERROR => Want to get counter only when one of my Pyro monster is send to GV
 	e3:SetOperation(c511027005.op)
 	c:RegisterEffect(e3)
 end
 
 c511027005.listed_series={0xb3a}
-
-function c511027005.filter(c)
-    return c:IsRace(RACE_PYRO)
-end
-
-function c511027005.thtg(c)
-    return c:IsRace(RACE_PYRO)
-end
 
 function c511027005.indct(e,re,r,rp)
 	if (r&REASON_BATTLE+REASON_EFFECT)~=0 then
