@@ -15,7 +15,7 @@ function c511027005.initial_effect(c)
 	e2:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetTargetRange(LOCATION_MZONE,0)
-	e2:SetTarget(aux.TargetBoolFunction(IsRace(RACE_PYRO))
+	e2:SetTarget(aux.TargetBoolFunction(IsRace(RACE_PYRO)))
 	e2:SetValue(c511027005.indct)
 	c:RegisterEffect(e2)
 
