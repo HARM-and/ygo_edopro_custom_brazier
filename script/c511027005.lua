@@ -40,6 +40,5 @@ function c511027005.indct(e,re,r,rp)
 end
 
 function c511027005.op(e,tp,eg,ep,ev,re,r,rp)
-	local c=eg:GetHandler()
 	e:GetHandler():AddCounter(0xb3c,1)
 end
