@@ -22,11 +22,13 @@ function s.initial_effect(c)
 
 	--Add counter
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_TO_GRAVE)
+	e3:SetProperty(EFFECT_FLAG_DELAY)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x1))
-	e3:SetOperation(s.op)
+	e3:SetCondition(s.spcon)
+	-- e3:SetTarget(s.sptg)
+	e3:SetOperation(s.spop)
 	c:RegisterEffect(e3)
 end
 
@@ -40,6 +42,17 @@ function s.indct(e,re,r,rp)
 	end
 end
 
-function s.op(e,tp,eg,ep,ev,re,r,rp)
+--If a Pyro monster is sent to GY
+function s.cfilter(c,tp)
+	return c:IsRace(RACE_PYRO) and c:IsMonster() and c:IsControler(tp)
+end
+
+--If it ever happened
+function s.spcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(s.cfilter,1,nil,tp)
+end
+
+--Performing the effect of adding a counter
+function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0xb3c,1)
 end
