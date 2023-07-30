@@ -14,7 +14,7 @@ function c511027006.initial_effect(c)
 	c:RegisterEffect(e1)
 
     --gain attack twice a turn
-	local e2=Effect.CreateEffect(e:GetHandler())
+	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_EXTRA_ATTACK)
 	e2:SetValue(1)
