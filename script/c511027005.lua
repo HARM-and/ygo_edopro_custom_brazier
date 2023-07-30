@@ -22,8 +22,7 @@ function c511027005.initial_effect(c)
 	--Add counter
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e3:SetCode(EVENT_CHAIN_SOLVING)
-	e3:SetProperty(EFFECT_FLAG_DELAY)
+	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetOperation(c511027005.op)
 	c:RegisterEffect(e3)
@@ -41,7 +40,5 @@ end
 
 function c511027005.op(e,tp,eg,ep,ev,re,r,rp)
 	local c=re:GetHandler()
-	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and c~=e:GetHandler() then
-		e:GetHandler():AddCounter(0xb3c,1)
-	end
+	e:GetHandler():AddCounter(0xb3c,1)
 end
