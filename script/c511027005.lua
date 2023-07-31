@@ -52,7 +52,7 @@ s.listed_series={0xb3a}
 
 --Je sais pas ce que ca fait ...
 function s.indct(e,re,r,rp)
-	if (r&REASON_BATTLE+REASON_EFFECT)~=0 then
+	if (r&REASON_BATTLE+REASON_EFFECT)~=0 and rp==1-tp then
 		return 1
 	else
 		return 0
