@@ -88,6 +88,6 @@ end
 function s.tcop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local count=e:GetHandler():GetCounter(0xb3c)
-	tc:AddCounter(0xb3c,count)
+	tc:AddCounter(0xb3c,10)
 	Duel.SendtoGrave(e:GetHandler(), REASON_EFFECT)
 end
