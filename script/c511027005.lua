@@ -34,7 +34,7 @@ function s.initial_effect(c)
 	local e4=Ritual.CreateProc(c,RITPROC_GREATER,aux.FilterBoolFunction(Card.IsSetCard,0xb3a),nil,aux.Stringid(id,1))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)
-	e4:SetOperation(s.rsop)
+	e4:SetCost(s.rscost)
 	c:RegisterEffect(e4)
 
 end
@@ -70,6 +70,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 
 --Performing the effect of removing a counter
-function s.rsop(e,tp,eg,ep,ev,re,r,rp)
+function s.rscost(e,tp,eg,ep,ev,re,r,rp)
+	if chk==0 then return e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
