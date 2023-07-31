@@ -86,6 +86,6 @@ end
 --Hehe
 function s.tcop(e,tp,eg,ep,ev,re,r,rp)
 	local count=e:GetHandler():GetCounter(0xb3c)
-	local tc=eg:GetFirstTarget()
+	local tc=eg:GetFirst()
 	tc:AddCounter(0xb3c,count)
 end
