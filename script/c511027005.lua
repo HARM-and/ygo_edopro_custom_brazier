@@ -56,7 +56,7 @@ function s.initial_effect(c)
 	e6:SetProperty(EFFECT_FLAG_DELAY)
 	e6:SetRange(LOCATION_SZONE)
 	e6:SetCondition(s.spcon)
-	e6:SetOperation(s.spop)
+	e6:SetOperation(s.tcop)
 	c:RegisterEffect(e6)
 
 end
