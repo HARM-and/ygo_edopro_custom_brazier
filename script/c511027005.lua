@@ -49,6 +49,16 @@ function s.initial_effect(c)
 	e5:SetOperation(s.tcop)
 	c:RegisterEffect(e5)
 
+	--Add counter
+	local e6=Effect.CreateEffect(c)
+	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e6:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e6:SetProperty(EFFECT_FLAG_DELAY)
+	e6:SetRange(LOCATION_SZONE)
+	e6:SetCondition(s.spcon)
+	e6:SetOperation(s.spop)
+	c:RegisterEffect(e6)
+
 end
 
 s.listed_series={0xb3a}
