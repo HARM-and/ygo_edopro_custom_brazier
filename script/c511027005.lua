@@ -86,6 +86,5 @@ end
 --Hehe
 function s.tcop(e,tp,eg,ep,ev,re,r,rp)
 	local count=e:GetHandler():GetCounter(0xb3c)
-	local tc=Duel.GetFirstTarget()
-	tc:AddCounter(0xb3c,count)
+	r:AddCounter(0xb3c,count)
 end
