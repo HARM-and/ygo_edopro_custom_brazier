@@ -37,19 +37,6 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 
 	-- Add all counter to a "Brazier" Ritual monster
-	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_TRIGGER_O)
-	e5:SetProperty(EFFECT_FLAG_DELAY)
-	e5:SetRange(LOCATION_SZONE)
-	e5:SetCountLimit(1)
-	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
-	--e5:SetCost(aux.selfreleasecost)
-	e5:SetCondition(s.tccon)
-	e5:SetTarget(s.thtg)
-	e5:SetOperation(s.tcop)
-	c:RegisterEffect(e5)
-
-	--Add counter
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e6:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -106,5 +93,5 @@ function s.tcop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local count=e:GetHandler():GetCounter(0xb3c)
 	tc:AddCounter(0xb3c,count)
-	e:GetHandler():RemoveCounter(0xb3c,count)
+	e:GetHandler():RemoveCounter(tp,1,0,0xb3c,count,REASON_COST)
 end
