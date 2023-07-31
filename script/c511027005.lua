@@ -34,10 +34,22 @@ function s.initial_effect(c)
 	local e4=Ritual.CreateProc(c,RITPROC_GREATER,aux.FilterBoolFunction(Card.IsSetCard,0xb3a),nil,aux.Stringid(id,1))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)
-	e4:SetCost(aux.selfreleasecost)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetOperation(s.tcop)
 	c:RegisterEffect(e4)
+
+	-- Add all counter to a "Brazier" Ritual monster
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_TRIGGER_O)
+	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e5:SetRange(LOCATION_SZONE)
+	e2:SetCountLimit(1)
+	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e5:SetLabel(TYPE_RITUAL)
+	e5:SetCost(aux.selfreleasecost)
+	e2:SetCondition(s.spcon)
+	e2:SetOperation(s.tcop)
+	c:RegisterEffect(e5)
 
 end
 
@@ -51,14 +63,19 @@ function s.indct(e,re,r,rp)
 	end
 end
 
---If a Pyro monster is sent to GY
-function s.cfilter(c,tp)
+--If a Pyro monster
+function s.filter1(c,tp)
 	return c:IsRace(RACE_PYRO) and c:IsMonster() and c:IsControler(tp)
+end
+
+--If a "Brazier" monster
+function s.filter2(c,tp)
+	return c:IsSetCard(0xb3a) and c:IsMonster() and c:IsControler(tp)
 end
 
 --If it ever happened
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(s.cfilter,1,nil,tp)
+	return eg:IsExists(s.filter1,1,nil,tp)
 end
 
 --Performing the effect of adding a counter
@@ -69,7 +86,6 @@ end
 --Hehe
 function s.tcop(e,tp,eg,ep,ev,re,r,rp)
 	local count=e:GetHandler():GetCounter(0xb3c)
-	tc=Duel.GetFirstTarget()
+	local tc=eg:GetFirstTarget()
 	tc:AddCounter(0xb3c,count)
-	
 end
