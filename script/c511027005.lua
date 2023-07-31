@@ -71,6 +71,5 @@ end
 
 --Performing the effect of removing a counter
 function s.rscost(e,tp,eg,ep,ev,re,r,rp)
-	if chk==0 then return e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
