@@ -42,6 +42,7 @@ function s.initial_effect(c)
 	e6:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e6:SetProperty(EFFECT_FLAG_DELAY)
 	e6:SetRange(LOCATION_SZONE)
+	e6:SetCost(selfreleasecost)
 	e6:SetCondition(s.spcon)
 	e6:SetOperation(s.tcop)
 	c:RegisterEffect(e6)
@@ -83,15 +84,9 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0xb3c,1)
 end
 
-function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chk==0 then return Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_MZONE,0,1,nil) end
-	Duel.SetOperationInfo(0,0,nil,1,tp,LOCATION_MZONE)
-end
-
---Hehe
+--Add counter to Ritual monster before discard
 function s.tcop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local count=e:GetHandler():GetCounter(0xb3c)
 	tc:AddCounter(0xb3c,count)
-	e:GetHandler():RemoveCounter(tp,1,0,0xb3c,count,REASON_COST)
 end
