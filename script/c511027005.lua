@@ -42,7 +42,6 @@ function s.initial_effect(c)
 	e6:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e6:SetProperty(EFFECT_FLAG_DELAY)
 	e6:SetRange(LOCATION_SZONE)
-	--e6:SetCost(aux.selfreleasecost)
 	e6:SetCondition(s.spcon)
 	e6:SetOperation(s.tcop)
 	c:RegisterEffect(e6)
@@ -51,6 +50,7 @@ end
 
 s.listed_series={0xb3a}
 
+--Je sais pas ce que ca fait ...
 function s.indct(e,re,r,rp)
 	if (r&REASON_BATTLE+REASON_EFFECT)~=0 then
 		return 1
