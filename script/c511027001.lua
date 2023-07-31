@@ -6,13 +6,16 @@ function s.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_DESTROY_REPLACE)
-	e1:SetRange(LOCATION_FZONE)
+	e1:SetRange(LOCATION_MZONE)
 	e1:SetTarget(s.reptg)
 	e1:SetValue(s.repval)
 	e1:SetOperation(s.repop)
 	c:RegisterEffect(e1)
 
 end
+
+s.listed_series={0xb3a}
+s.listed_names={id}
 
 function s.filter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD) and c:IsSetCard(0xb3a)
