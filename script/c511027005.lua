@@ -16,6 +16,7 @@ function s.initial_effect(c)
 	e2:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_MZONE,0)
+	e6:SetCondition(s.indcon)
 	e2:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0xb3a))
 	e2:SetValue(s.indct)
 	c:RegisterEffect(e2)
@@ -51,8 +52,8 @@ end
 s.listed_series={0xb3a}
 
 --Je sais pas ce que ca fait ...
-function s.indct(e,re,r,rp,tp)
-	if (r&REASON_BATTLE+REASON_EFFECT)~=0 and rp==1-tp then
+function s.indct(e,re,r,rp)
+	if (r&REASON_BATTLE+REASON_EFFECT)~=0 then
 		return 1
 	else
 		return 0
@@ -72,6 +73,15 @@ end
 --If it ever happened 1
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.filter1,1,nil,tp)
+end
+
+--If it ever happened 1
+function s.indcon(e,tp,eg,ep,ev,re,r,rp)
+	if rp==1-tp then
+		return 1
+	else
+		return 0
+	end
 end
 
 --If it ever happened 2
