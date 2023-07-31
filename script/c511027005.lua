@@ -46,7 +46,7 @@ function s.initial_effect(c)
 	e5:SetCost(aux.selfreleasecost)
 	e5:SetCondition(s.tccon)
 	e5:SetTarget(s.thtg)
-	--e5:SetOperation(s.tcop)
+	e5:SetOperation(s.tcop)
 	c:RegisterEffect(e5)
 
 end
@@ -87,15 +87,14 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 
 function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local tc=eg:GetFirst()
-	local count=e:GetHandler():GetCounter(0xb3c)
-	tc:AddCounter(0xb3c,count)
-	e:GetHandler():RemoveCounter(0xb3c,count)
+	if chk==0 then return Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_MZONE,0,1,nil) end
+	Duel.SetOperationInfo(0,0,nil,1,tp,LOCATION_MZONE)
 end
 
 --Hehe
 function s.tcop(e,tp,eg,ep,ev,re,r,rp)
+	local tc=eg:GetFirst()
 	local count=e:GetHandler():GetCounter(0xb3c)
-	r:AddCounter(0xb3c,count)
+	tc:AddCounter(0xb3c,count)
 	e:GetHandler():RemoveCounter(0xb3c,count)
 end
