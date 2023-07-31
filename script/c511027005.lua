@@ -38,7 +38,7 @@ function s.initial_effect(c)
 
 	-- Add all counter to a "Brazier" Ritual monster
 	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e6:SetProperty(EFFECT_FLAG_DELAY)
 	e6:SetRange(LOCATION_SZONE)
