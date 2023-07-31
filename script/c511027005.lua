@@ -77,7 +77,7 @@ end
 
 --If it ever happened 1
 function s.indcon(e,tp,eg,ep,ev,re,r,rp)
-	if rp==1-tp then
+	if rp==1-ep then
 		return 1
 	else
 		return 0
