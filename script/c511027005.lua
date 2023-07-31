@@ -41,15 +41,14 @@ function s.initial_effect(c)
 	-- Add all counter to a "Brazier" Ritual monster
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_TRIGGER_O)
-	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e5:SetProperty(EFFECT_FLAG_DELAY)
 	e5:SetRange(LOCATION_SZONE)
 	e5:SetCountLimit(1)
 	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e5:SetLabel(TYPE_RITUAL)
 	e5:SetCost(aux.selfreleasecost)
-	e5:SetCondition(s.spcon)
-	--e5:SetTarget(s.thtg)
-	e5:SetOperation(s.tcop)
+	e5:SetCondition(s.tccon)
+	e5:SetTarget(s.thtg)
+	--e5:SetOperation(s.tcop)
 	c:RegisterEffect(e5)
 
 end
@@ -71,12 +70,17 @@ end
 
 --If a "Brazier" monster
 function s.filter2(c,tp)
-	return c:IsSetCard(0xb3a) and c:IsMonster() and c:IsControler(tp)
+	return c:IsSetCard(0xb3a) and c:IsControler(tp) and c:IsSummonType(SUMMON_TYPE_RITUAL)
 end
 
---If it ever happened
+--If it ever happened 1
 function s.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(s.filter1,1,nil,tp)
+end
+
+--If it ever happened 2
+function s.tccon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(s.filter2,1,nil,tp)
 end
 
 --Performing the effect of adding a counter
@@ -84,8 +88,16 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0xb3c,1)
 end
 
+function s.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	local tc=eg:GetFirst()
+	local count=e:GetHandler():GetCounter(0xb3c)
+	tc:AddCounter(0xb3c,count)
+	e:GetHandler():RemoveCounter(0xb3c,count)
+end
+
 --Hehe
 function s.tcop(e,tp,eg,ep,ev,re,r,rp)
 	local count=e:GetHandler():GetCounter(0xb3c)
 	r:AddCounter(0xb3c,count)
+	e:GetHandler():RemoveCounter(0xb3c,count)
 end
