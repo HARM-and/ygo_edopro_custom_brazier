@@ -17,7 +17,7 @@ function s.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0xb3a))
-	e2:SetValue(s.indct)
+	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 
 	--Add counter
