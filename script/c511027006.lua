@@ -23,9 +23,9 @@ function c511027006.initial_effect(c)
 end
 
 function s.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetCounter(0xb3c)>=0
+	return e:GetHandler():GetCounter(0xb3c)>=1
 end
 
 function s.twicecon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetCounter(0xb3c)>=0
+	return e:GetHandler():GetCounter(0xb3c)>=2
 end
