@@ -35,6 +35,8 @@ function s.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCost(aux.selfreleasecost)
+	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e4:SetOperation(s.tcop)
 	c:RegisterEffect(e4)
 
 end
@@ -64,7 +66,10 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0xb3c,1)
 end
 
---Performing the effect of removing a counter
-function s.spop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RemoveCounter(0xb3c,1)
+--Hehe
+function s.tcop(e,tp,eg,ep,ev,re,r,rp)
+	local count=e:GetHandler():GetCounter(0xb3c)
+	tc=Duel.GetFirstTarget()
+	tc:AddCounter(0xb3c,count)
+	
 end
