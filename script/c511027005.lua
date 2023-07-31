@@ -17,7 +17,7 @@ function s.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0xb3a))
-	e2:SetValue(aux.indoval)
+	e2:SetValue(s.indct)
 	c:RegisterEffect(e2)
 
 	--Add counter
@@ -51,8 +51,8 @@ end
 s.listed_series={0xb3a}
 
 --Je sais pas ce que ca fait ...
-function s.indct(e,re,r,rp)
-	if (r&REASON_BATTLE+REASON_EFFECT)~=0 and r:IsSetCard(0xb3a) then
+function s.indct(e,re,r,rp,tp)
+	if (r&REASON_BATTLE+REASON_EFFECT)~=0 and rp==1-tp then
 		return 1
 	else
 		return 0
